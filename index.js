@@ -96,13 +96,13 @@ app.post('/api/notes', (request, response) => {
 })
 
 // Middleware AFTER routes
-const unknowEndpoint = (request, response) => {
+const unknownEndpoint = (request, response) => {
   response.status(404).json({
     error: 'Endpoint not found!'
   })
 }
 
-app.use(unknowEndpoint)
+app.use(unknownEndpoint)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
