@@ -8,6 +8,9 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+// Make express show static content
+app.use(express.static('build'))
+
 // Middleware BEFORE routes
 const requestLogger = (request, response, next) => {
   console.log('Method: ', request.method)
@@ -47,9 +50,9 @@ const generateNoteId = () => {
   return maxIdNumber + 1
 }
 
-app.get('/', (request, response) => {
-  response.send('<h1>Hello, World!</h1>')
-})
+// app.get('/', (request, response) => {
+//   response.send('<h1>Hello, World!</h1>')
+// })
 
 app.get('/api/notes', (request, response) => {
   response.json(notes)
